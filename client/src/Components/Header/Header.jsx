@@ -62,7 +62,12 @@ const Header = () => {
       </section>
       <div className="header-content__right">
         <span className="header__search"> SEARCH </span>
-        <span className="header__search"></span>
+
+        {/* <img
+          className="header__img"
+          src="https://images-dynamic-arcteryx.imgix.net/foundation-ui/svgs/Cart.svg"
+          alt="Cart Icon"
+        /> */}
       </div>
     </header>
   );
