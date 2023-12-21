@@ -37,5 +37,18 @@
     "sex": "123412341243",
     "calfDiameter": "123412341",
     "headDiameter": "123412341234"
+  },
+  {
+    "id": "4577ce60-c2e4-4538-adb4-c5993ea6b847",
+    "ankleDiameter": "",
+    "biacromialDiameter": "",
+    "kneeDiameter": "",
+    "weight": "",
+    "girth": "",
+    "wristDiameter": "",
+    "height": "",
+    "sex": "",
+    "calfDiameter": "",
+    "headDiameter": ""
   }
 ]
