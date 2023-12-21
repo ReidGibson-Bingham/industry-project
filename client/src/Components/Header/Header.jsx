@@ -29,7 +29,7 @@ const Header = () => {
           <NavLink
             to="/"
             className={`header__pages-name ${
-              isActiveHome("/") ? "header__pages-name--active" : ""
+              isActiveHome("/") ? "header__pages-name" : ""
             }`}
           >
             MEN
@@ -37,7 +37,7 @@ const Header = () => {
           <NavLink
             to="/form"
             className={`header__pages-name ${
-              isActiveForm("/form") ? "header__pages-name--active" : ""
+              isActiveForm("/form") ? "header__pages-name" : ""
             }`}
           >
             WOMEN
@@ -45,7 +45,7 @@ const Header = () => {
           <NavLink
             to="/form"
             className={`header__pages-name ${
-              isActiveForm("/form") ? "header__pages-name--active" : ""
+              isActiveForm("/form") ? "header__pages-name" : ""
             }`}
           >
             EXPLORE
@@ -56,10 +56,14 @@ const Header = () => {
               isActiveForm("/form") ? "header__pages-name--active" : ""
             }`}
           >
-            SIZE GUIDE
+            FIND SIZE
           </NavLink>
         </section>
       </section>
+      <div className="header-content__right">
+        <span className="header__search"> SEARCH </span>
+        <span className="header__search"></span>
+      </div>
     </header>
   );
 };
