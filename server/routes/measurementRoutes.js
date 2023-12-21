@@ -43,7 +43,9 @@ router
             const measurementsFile = fs.readFileSync(measurementsPath);
             const measurementsData = JSON.parse(measurementsFile)
             // combining the req.body with a bunch of other data using the object spread operator
-            measurementsData.push({id: `${uuidv4()}`, ...newMeasurementSet
+            measurementsData.push({
+                id: `${uuidv4()}`,
+                ...newMeasurementSet
             });
 
             fs.writeFileSync(measurementsPath, JSON.stringify(measurementsData, null, 2));
