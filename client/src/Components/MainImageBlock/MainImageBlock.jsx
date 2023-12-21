@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 
 import model from './../../assets/models/female_model.png';
 import modelLegs from './../../assets/models/female_model_legs.png';
@@ -9,17 +9,18 @@ import yellowJacketModel2 from './../../assets/jackets/yellow-jacket-model-2.png
 import brownJacketModel2 from './../../assets/jackets/brown-jacket-model-2.png';
 import './MainImageBlock.scss';
 
-const DraggableItem = ({ img, index, handleSelectProduct }) => {
-    const [, drag] = useDrag({
-        type: 'ITEM',
-    });
+import ProductsList from '../ProductList/ProductList';
+import CategoryList from '../CategoryList/CategoryList';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
-    return (
-        <div ref={drag} style={{ border: '1px solid #000', padding: '8px', cursor: 'move' }} onClick={() => handleSelectProduct(index)}>
-            <img className="main__left-img" src={img} />
-        </div>
-    );
-};
+const categories = [{
+    type: 'shell-jackets',
+    label: 'Shell Jackets',
+}, {
+    type: 'insulated-jackets',
+    label: 'Insulated Jackets',
+}]
+
 
 const DropTarget = ({ onDrop }) => {
     const [, drop] = useDrop({
@@ -64,6 +65,7 @@ const MainImageBlock = () => {
     const [droppedItem, setDroppedItem] = useState(null);
     const [products, setProducts] = useState(jackets);
     const [selectedProduct, setSelectedProduct] = useState(jackets[0]);
+    const [selectedCategory, setSelectedCategoty] = useState();
 
     const onDrop = () => {
         setDroppedItem(selectedProduct);
@@ -84,25 +86,19 @@ const MainImageBlock = () => {
     };
 
     const handleSelectProduct = (index) => {
-        debugger;
         setSelectedProduct(products[index]);
     };
+
+    const handleSelectCategory = (category) => {
+        // setProducts();
+        setSelectedCategoty(category);
+    }
 
     return (
         <div className="main">
             <div className="main__left">
-                <div className="main__product-list">
-                    {products.map((item, index) => (
-                        <div key={index} className="main__product">
-                            <DraggableItem img={item.image} index={index} handleSelectProduct={handleSelectProduct} />
-                            <div className="main__img-colors">
-                                {item.colorImages.map((item, colorIndex) => (
-                                    <img key={colorIndex} className="main__img-color" src={item.image} onClick={() => handleSelectColor({ productIndex: index, colorIndex })}/>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                {!selectedCategory && <CategoryList categories={categories} handleSelectCategory={handleSelectCategory} />}
+                {selectedCategory && <ProductsList products={products} category={selectedCategory} handleSelectProduct={handleSelectProduct} handleSelectColor={handleSelectColor} />}
             </div>
             <div className="main__center">
                 <img className="main__img" src={model}/>
@@ -112,39 +108,8 @@ const MainImageBlock = () => {
                 <DropTarget onDrop={onDrop} />
             </div>
             <div className="main__right">
-                <h2 className="main__right-product-header">{selectedProduct.name}</h2>
-                <p className="main__right-product-description">{selectedProduct.description}</p>
-                <p className="main__right-product-price">{selectedProduct.price}</p>
-                <p>Your size: <b>S</b></p>
-                <p>Colour: <b>{selectedProduct.color ?? ''}</b></p>
-                <div className="main__right-size-list">
-                    <div className="main__right-size-list-item">
-                        XXS
-                    </div>
-                    <div className="main__right-size-list-item">
-                        XS
-                    </div>
-                    <div className="main__right-size-list-item main__right-size-list-item--selected">
-                        S
-                    </div>
-                    <div className="main__right-size-list-item">
-                        M
-                    </div>
-                    <div className="main__right-size-list-item">
-                        L
-                    </div>
-                    <div className="main__right-size-list-item">
-                        XL
-                    </div>
-                    <div className="main__right-size-list-item">
-                        XLL
-                    </div>
-                </div>
-                <button className="main__right-buy-button">Add to Cart</button>
-
-                <p>FREE SHIPPING / FREE RETURNS</p>
-                <p>BUY ONLINE. PICK UP AT A STORE.</p>
-                <p>Arc'teryx Vancouver‑ Low Stock</p>
+                {selectedCategory && <ProductDetails product={selectedProduct} />}
+                {!selectedCategory && <div >Please choose Category</div>}
             </div>
         </div>
     )
