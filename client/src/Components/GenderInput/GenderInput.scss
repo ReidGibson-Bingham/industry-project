@@ -1,0 +1,31 @@
+@use "../../styles/partials/globals" as *;
+
+.gender {
+  &__form {
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  &__options {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+}
+
+// .button {
+//   width: 10rem;
+//   padding: 1rem;
+//   background: black;
+//   color: white;
+//   font-size: 1.5rem;
+//   font-weight: bold;
+//   border: 1px solid grey;
+//   box-shadow: 0 2px 5px grey;
+//   &:hover {
+//     cursor: pointer;
+//   }
+// }

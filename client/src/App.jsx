@@ -1,30 +1,26 @@
-import './App.scss'
+import "./App.scss";
 
-import Home from './pages/Home/Home';
-import Form from './pages/Form/Form';
-import Header from './Components/Header/Header';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from "./pages/Home/Home";
+import Form from "./pages/Form/Form";
+import Header from "./Components/Header/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-
-        <Header/>
+        <Header />
 
         <Routes>
+          <Route path="/" element={<Home />} />
 
-          <Route path="/" element={<Home/>} />
-          
-          <Route path="/form" element={<Form/>} />
+          <Route path="/form" element={<Form />} />
 
+          <Route path="/form" element={<Form />} />
         </Routes>
-         
       </BrowserRouter>
     </>
-    
-  )
-
+  );
 }
 
 export default App;

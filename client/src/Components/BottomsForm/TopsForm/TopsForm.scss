@@ -1,0 +1,46 @@
+.tops {
+  &__form {
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  &__options {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+  &__input {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 5px grey;
+    border: 1px solid black;
+  }
+  &__flex {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+  }
+  &__measurements {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    &--next,
+    &--back {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+}
