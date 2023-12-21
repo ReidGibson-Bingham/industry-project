@@ -9,13 +9,13 @@ import yellowJacketModel2 from './../../assets/jackets/yellow-jacket-model-2.png
 import brownJacketModel2 from './../../assets/jackets/brown-jacket-model-2.png';
 import './MainImageBlock.scss';
 
-const DraggableItem = ({ img }) => {
+const DraggableItem = ({ img, index, handleSelectProduct }) => {
     const [, drag] = useDrag({
         type: 'ITEM',
     });
 
     return (
-        <div ref={drag} style={{ border: '1px solid #000', padding: '8px', cursor: 'move' }}>
+        <div ref={drag} style={{ border: '1px solid #000', padding: '8px', cursor: 'move' }} onClick={() => handleSelectProduct(index)}>
             <img className="main__left-img" src={img} />
         </div>
     );
@@ -32,6 +32,7 @@ const DropTarget = ({ onDrop }) => {
       </div>
     );
   };
+
 
 const jackets = [{
     "name": "ATOM JACKET WOMEN'S",
@@ -82,13 +83,18 @@ const MainImageBlock = () => {
         setSelectedProduct(newProducts[productIndex]);
     };
 
+    const handleSelectProduct = (index) => {
+        debugger;
+        setSelectedProduct(products[index]);
+    };
+
     return (
         <div className="main">
             <div className="main__left">
                 <div className="main__product-list">
                     {products.map((item, index) => (
                         <div key={index} className="main__product">
-                            <DraggableItem img={item.image} />
+                            <DraggableItem img={item.image} index={index} handleSelectProduct={handleSelectProduct} />
                             <div className="main__img-colors">
                                 {item.colorImages.map((item, colorIndex) => (
                                     <img key={colorIndex} className="main__img-color" src={item.image} onClick={() => handleSelectColor({ productIndex: index, colorIndex })}/>
