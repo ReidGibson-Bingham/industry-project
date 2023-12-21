@@ -1,4 +1,5 @@
 import model from './../../assets/female_model-removebg-preview.png'
+import './MainImageBlock.scss';
 
 
 const MainImageBlock = () => {

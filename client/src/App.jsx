@@ -1,22 +1,29 @@
 import reactLogo from './assets/react.svg'
+
 import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './Components/Header/Header'
-import MainImageBlock from './Components/MainImageBlock/MainImageBlock'
-import {BrowserRouter, Router, Route} from 'react-router-dom'
+import './App.scss'
+
+import Home from './pages/Home/Home';
+import Form from './pages/Form/Form';
+import Header from './Components/Header/Header';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Router>
+
+        <Header/>
+
+        <Routes>
 
           <Route path="/" element={<Home/>} />
           
-          <Route path="/form" element={<Home/>} />
+          <Route path="/form" element={<Form/>} />
 
-        </Router>
+        </Routes>
+         
       </BrowserRouter>
     </>
     

@@ -1,8 +1,9 @@
 .main {
-
-    width: 100%;
+    
     display: flex;
     justify-content: center;
+    height: 80vh;
+    align-items: center;
 
     &__image {
         width: 50%;
