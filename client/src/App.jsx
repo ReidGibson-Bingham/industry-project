@@ -6,10 +6,11 @@ import './App.scss'
 import Home from './pages/Home/Home';
 import Form from './pages/Form/Form';
 import Header from './Components/Header/Header';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
@@ -31,4 +32,4 @@ function App() {
 
 }
 
-export default App
+export default App;

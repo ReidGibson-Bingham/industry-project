@@ -2,25 +2,18 @@
 @import './../../styles/partials/mixins';
 
 .header {
-
     display: flex;
-    padding: 1rem;
     flex-direction: column;
     align-items: center;
-    background-color: $navHeader;
-    width: 100%;
+    background-color: $white;
 
     @include tablet {
         flex-direction: row;
-        // padding: 1.5rem 2rem;
         justify-content: space-between;
     }
 
     @include desktop {
-        padding: 1.5rem 5rem;
-        // max-width: 1020px;
-        margin: 0 auto;
-
+        padding: 0 2rem;
     }
 
     &__logo-container {
@@ -29,8 +22,7 @@
     }
 
     &__logo {
-        height: 4.75rem;
-        width: 12.03688rem;
+        height: 5rem;
     }
 
 
