@@ -6,14 +6,6 @@ const measurementsPath = "./Data/Data.JSON";
 
 router.use(express.json());
 
-// const createText = (maxLength) => {
-//     return [...Array(Math.floor(Math.random() * maxLength))].map(() => Math.random() < 0.5 ? ' ' : String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('');
-// }
-
-// const randyNum = (maxLength) => {
-//     return Math.floor(Math.random() * maxLength);
-// }
-
 router
     .route('/measurements')
     .get((_req, res) => {
@@ -65,19 +57,19 @@ router
     .route('/measurements/:id')
     .get((req, res) => {
 
-        const videoId = req.params.id;
+        const measurementsId = req.params.id;
 
         try {
 
-            const videosFile = fs.readFileSync(videosPath);
-            const videosData = JSON.parse(videosFile);
-            const selectedVideo = videosData.find(video => video.id === videoId);
-            if (selectedVideo) {
-                console.log("the selected video is: ", selectedVideo);
-                res.send(selectedVideo);
+            const measurementsFile = fs.readFileSync(measurementsPath);
+            const measurementsData = JSON.parse(measurementsFile);
+            const selectedSet = measurementsData.find(set => set.id === measurementsId);
+            if (selectedSet) {
+                console.log("the selected set is: ", selectedSet);
+                res.send(selectedSet);
             } else {
-                console.log("Video not found");
-                res.status(404).send({ error: 'Video not found' });
+                console.log("Set not found");
+                res.status(404).send({ error: 'Set not found' });
             }
 
         } catch (error) {
