@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  align-items: flex-start;
+  &__box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+  }
+
+  &__input {
+    margin: 1rem;
+  }
+
+  &__button-box {
+    display: flex;
+    margin: 1rem;
+  }
+
+  &__cancel-btn {
+    margin-left: 1rem;
+  }
+}
