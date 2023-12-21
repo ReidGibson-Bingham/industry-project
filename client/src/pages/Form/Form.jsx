@@ -1,164 +1,122 @@
-import './Form.scss';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import "./Form.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import GenderInput from "../../Components/GenderInput/GenderInput";
+import ClothingType from "../../Components/ClothingType/ClothingType";
+import BottomsForm from "../../Components/BottomsForm/BottomsForm";
+import TopsForm from "../../Components/BottomsForm/TopsForm/TopsForm";
 
 const Form = () => {
+  //const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const [measurements, setMeasurements] = useState({});
+  const [item, setItem] = useState("");
 
-    const navigate = useNavigate();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMeasurements((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
 
-    const [measurements, setMeasurements] = useState({
-        ankleDiameter: '',
-        biacromialDiameter: '',
-        kneeDiameter: '',
-        weight: '',
-        girth: '',
-        wristDiameter: '',
-        height: '',
-        sex: '',
-        calfDiameter: '',
-        headDiameter: ''
-    });
+  //   const handleCancel = (e) => {
+  //     e.preventDefault();
+  //     navigate("/");
+  //   };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setMeasurements((prevDetails) => ({
-            ...prevDetails,
-            [name]: value,
-        }));
-    };
+  const handleSubmit = (e) => {
+    console.log(e.target.name);
+    e.preventDefault();
 
-    const handleCancel = (e) => {
-        e.preventDefault();
-        navigate("/");
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("the data: ", measurements)
-
-        const postMeasurements = async () => {
-            try {
-                const response = await axios.post('http://localhost:8080/measurements', measurements);
-                if (response) {
-                    console.log("the response from the server: ", response);
-                }
-            } catch (err) {
-                console.log("error adding measurments: ", err);
-            }
-        }
-
-        postMeasurements();
+    if (step === 1) {
+      setStep(2);
+    }
+    if (step === 2 && e.target.name === "bottoms") {
+      {
+        setStep(3);
+      }
+    }
+    if (step === 2 && e.target.name === "tops") {
+      {
+        setStep(4);
+      }
     }
 
+    console.log("the data: ", measurements);
 
+    // const postMeasurements = async () => {
+    //   try {
+    //     const response = await axios.post(
+    //       "http://localhost:8080/measurements",
+    //       measurements
+    //     );
+    //     if (response) {
+    //       console.log("the response from the server: ", response);
+    //     }
+    //   } catch (err) {
+    //     console.log("error adding measurments: ", err);
+    //   }
+    // };
+
+    // postMeasurements();
+  };
+  console.log(measurements);
+  console.log("ITEM", item);
+  console.log("STEP", step);
+
+  if (step === 1) {
     return (
+      <>
+        <div className="form__box">
+          <GenderInput
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      </>
+    );
+  }
 
-        <>
-
-            <div className="form__box">
-
-                <form className="form" onSubmit={handleSubmit} >
-                
-                    <input
-                        className="form__input"
-                        placeholder="Ankle Diameter"
-                        name='ankleDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="biacromial diameter"
-                        name='biacromialDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Knee Diameter"
-                        name='kneeDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Weight"
-                        name='weight'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Girth"
-                        name='girth'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Wrist Diameter"
-                        name='wristDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Height"
-                        name='height'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Sex"
-                        name='sex'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Calf Diameter"
-                        name='calfDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <input
-                        className="form__input"
-                        placeholder="Head Diameter"
-                        name='headDiameter'
-                        onChange={handleChange}
-                    >
-                    </input>
-
-                    <div className='form__button-box'>
-
-                        <button className='form__add-btn' type="submit" >
-                            Submit Measurements
-                        </button>
-
-                        <button className='form__cancel-btn' type="button" onClick={handleCancel}>
-                            Cancel
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </>
-
-    )
-}
+  if (step === 2) {
+    return (
+      <>
+        <div className="form__box">
+          <ClothingType
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            setItem={setItem}
+          />
+        </div>
+      </>
+    );
+  }
+  if (step === 3) {
+    return (
+      <>
+        <div className="form__box">
+          <BottomsForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      </>
+    );
+  } else if (step === 4) {
+    return (
+      <>
+        <div className="form__box">
+          <TopsForm handleChange={handleChange} handleSubmit={handleSubmit} />
+        </div>
+      </>
+    );
+  }
+  return (
+    <>
+      <div className="form__box">Loading....</div>
+    </>
+  );
+};
 
 export default Form;
