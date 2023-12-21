@@ -5,6 +5,7 @@
     height: 80vh;
     align-items: center;
     background-color: #242424;
+    flex: 1;
 
     &__image {
         width: 50%;
@@ -53,6 +54,7 @@
         width: 400px;
         background-color: white;
         border-radius: 2rem;
+        height: 80%;
     }
 
     &__left-img {
