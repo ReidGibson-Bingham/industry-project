@@ -1,8 +1,7 @@
 import './Form.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
+import axios from "axios";
 
 const Form = () => {
 
@@ -37,6 +36,19 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("the data: ", measurements)
+
+        const postMeasurements = async () => {
+            try {
+                const response = await axios.post('http://localhost:8080/measurements', measurements);
+                if (response) {
+                    console.log("the response from the server: ", response);
+                }
+            } catch (err) {
+                console.log("error adding measurments: ", err);
+            }
+        }
+
+        postMeasurements();
     }
 
 
@@ -145,7 +157,7 @@ const Form = () => {
             </div>
 
         </>
-        
+
     )
 }
 
