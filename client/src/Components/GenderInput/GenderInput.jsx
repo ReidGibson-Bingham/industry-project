@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "./GenderInput.scss";
 
-export default function GenderInput({ handleChange, handleSubmit }) {
+export default function GenderInput({ handleChange, handleNavigate }) {
   return (
     <div className="gender__form">
       <h1 className="gender__title">Who are you shopping for?</h1>
@@ -11,7 +11,7 @@ export default function GenderInput({ handleChange, handleSubmit }) {
           className=" button form__male"
           value="men"
           name="gender"
-          onClick={handleChange && handleSubmit}
+          onClick={handleChange && handleNavigate}
         >
           Men
         </button>
@@ -19,7 +19,7 @@ export default function GenderInput({ handleChange, handleSubmit }) {
           className="button form__female"
           value="women"
           name="gender"
-          onClick={handleChange && handleSubmit}
+          onClick={handleChange && handleNavigate}
         >
           Women{" "}
         </button>

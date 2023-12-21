@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import "./TopsForm.scss";
-import { useNavigate } from "react-router-dom";
+
 export default function TopsForm({ handleChange, handleSubmit }) {
-  const navigate = useNavigate();
   return (
     <div className="tops">
       <h1 className="tops__title">Please enter your measurements</h1>
-      <form onSubmit={handleSubmit} className="tops__options">
+      <form className="tops__options">
         <div className="tops__flex">
           <div className="tops__measurements">
             <div className="flex">
@@ -48,17 +47,10 @@ export default function TopsForm({ handleChange, handleSubmit }) {
           </div>
           <div className="tops__buttons">
             {" "}
-            {/* <button
-              className=" button tops__buttons--back"
-              value="tops"
-              //onClick={() => navigate(-1)}
-            >
-              Go Back
-            </button> */}
             <button
               className="button tops__buttons--next"
               value="bottoms"
-              onClick={() => navigate("/")}
+              onClick={handleSubmit}
             >
               Next{" "}
             </button>

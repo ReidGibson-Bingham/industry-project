@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import "./BottomsForm.scss";
-import { useNavigate } from "react-router-dom";
+
 export default function BottomsForm({ handleChange, handleSubmit }) {
-  const navigate = useNavigate();
   return (
     <div className="bottoms">
       <h1 className="bottoms__title">Please enter your measurements</h1>
-      <form onSubmit={handleSubmit} className="bottoms__options">
+      <form className="bottoms__options">
         <div className="bottoms__flex">
           <div className="bottoms__measurements">
             <div className="flex">
@@ -33,7 +32,7 @@ export default function BottomsForm({ handleChange, handleSubmit }) {
             <button
               className="button bottoms__buttons--next"
               value="bottoms"
-              onClick={() => navigate("/")}
+              onClick={handleSubmit}
             >
               Next{" "}
             </button>

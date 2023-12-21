@@ -8,7 +8,7 @@ import BottomsForm from "../../Components/BottomsForm/BottomsForm";
 import TopsForm from "../../Components/BottomsForm/TopsForm/TopsForm";
 
 const Form = () => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [measurements, setMeasurements] = useState({});
   const [item, setItem] = useState("");
@@ -21,12 +21,7 @@ const Form = () => {
     }));
   };
 
-  //   const handleCancel = (e) => {
-  //     e.preventDefault();
-  //     navigate("/");
-  //   };
-
-  const handleSubmit = (e) => {
+  const handleNavigate = (e) => {
     console.log(e.target.name);
     e.preventDefault();
 
@@ -45,22 +40,27 @@ const Form = () => {
     }
 
     console.log("the data: ", measurements);
+  };
 
-    // const postMeasurements = async () => {
-    //   try {
-    //     const response = await axios.post(
-    //       "http://localhost:8080/measurements",
-    //       measurements
-    //     );
-    //     if (response) {
-    //       console.log("the response from the server: ", response);
-    //     }
-    //   } catch (err) {
-    //     console.log("error adding measurments: ", err);
-    //   }
-    // };
+  const handleSubmit = (e) => {
+    console.log("submitting");
+    e.preventDefault();
+    const postMeasurements = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/measurements",
+          measurements
+        );
+        if (response) {
+          console.log("the response from the server: ", response);
+        }
+      } catch (err) {
+        console.log("error adding measurments: ", err);
+      }
+    };
 
-    // postMeasurements();
+    postMeasurements();
+    navigate("/");
   };
   console.log(measurements);
   console.log("ITEM", item);
@@ -72,7 +72,7 @@ const Form = () => {
         <div className="form__box">
           <GenderInput
             handleChange={handleChange}
-            handleSubmit={handleSubmit}
+            handleNavigate={handleNavigate}
           />
         </div>
       </>
@@ -85,7 +85,7 @@ const Form = () => {
         <div className="form__box">
           <ClothingType
             handleChange={handleChange}
-            handleSubmit={handleSubmit}
+            handleNavigate={handleNavigate}
             setItem={setItem}
           />
         </div>
@@ -98,6 +98,7 @@ const Form = () => {
         <div className="form__box">
           <BottomsForm
             handleChange={handleChange}
+            handleNavigate={handleNavigate}
             handleSubmit={handleSubmit}
           />
         </div>
@@ -107,7 +108,11 @@ const Form = () => {
     return (
       <>
         <div className="form__box">
-          <TopsForm handleChange={handleChange} handleSubmit={handleSubmit} />
+          <TopsForm
+            handleChange={handleChange}
+            handleNavigate={handleNavigate}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </>
     );
