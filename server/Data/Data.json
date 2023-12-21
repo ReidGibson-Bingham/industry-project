@@ -1,0 +1,28 @@
+[
+  {
+    "ankleDiameter": "12341",
+    "biacromialDiameter": "1243123",
+    "calfDiameter": "1234123421",
+    "girth": "12341",
+    "headDiameter": "123412341234",
+    "height": "12341234",
+    "kneeDiameter": "12341",
+    "sex": "12341234",
+    "weight": "123412342",
+    "wristDiameter": "12312341",
+    "id": "d7ed621d-d68d-4540-b09e-dc76c834b665"
+  },
+  {
+    "id": "43bcd1da-e5bc-4381-9a5b-67e6776c190f",
+    "ankleDiameter": "234123412341",
+    "biacromialDiameter": "124312341234123",
+    "calfDiameter": "123411234123423423421",
+    "girth": "1212341234234341",
+    "headDiameter": "12341212341234341234",
+    "height": "123412341234121234",
+    "kneeDiameter": "123123412341",
+    "sex": "12341231234211234",
+    "weight": "12341231234123442",
+    "wristDiameter": "1231123412342341"
+  }
+]
