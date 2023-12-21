@@ -25,7 +25,6 @@ const Header = () => {
 
     return (
         <header className="header">
-            
                 <section className="header__logo-container">
                     <img className="header__logo" src={logo} />
                 </section>

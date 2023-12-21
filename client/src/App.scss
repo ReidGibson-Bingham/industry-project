@@ -4,13 +4,12 @@
   font-family: sans-serif;
 }
 
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-
+/*
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -46,3 +45,8 @@
 .read-the-docs {
   color: #888;
 } */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
