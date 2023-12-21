@@ -5,7 +5,7 @@
 
 .header {
   display: flex;
-  padding: 1rem;
+  padding: 0 1rem;
   flex-direction: column;
   align-items: center;
   background-color: white;
@@ -13,12 +13,12 @@
 
   @include tablet {
     flex-direction: row;
-    padding: 1.5rem 2rem;
+    padding: 0rem 1rem;
     justify-content: space-between;
   }
 
   @include desktop {
-    padding: 1.5rem 5rem;
+    padding: 0 1rem;
     margin: 0 auto;
   }
 
@@ -30,7 +30,7 @@
   }
 
   &__logo {
-    height: 4.75rem;
+    height: 5.85rem;
     width: 12.03688rem;
   }
 
